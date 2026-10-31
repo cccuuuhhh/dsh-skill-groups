@@ -1,0 +1,55 @@
+{
+  "meta": {
+    "title": "技能组",
+    "description": "把技能分组，自由勾选组合切换，只影响模型能发现的技能目录，不删除技能、不改文件。"
+  },
+  "chip": {
+    "label": "技能组",
+    "none": "全部技能"
+  },
+  "panel": {
+    "title": "技能组",
+    "current": "当前生效",
+    "groups": "技能组",
+    "members": "成员",
+    "cost": "目录成本",
+    "costHint": "该组会让模型目录包含约 {chars} 字符，≈{tokens} tokens。",
+    "masked": "已隐藏 {count} 个技能",
+    "reasonActive": "当前组激活",
+    "reasonUngrouped": "未归组，按默认策略保留",
+    "reasonInactive": "属于「{group}」，该组未激活",
+    "reasonPolicy": "未归组，且默认策略为不加载",
+    "defaultPolicy": "未归组技能",
+    "defaultAll": "保持可见",
+    "defaultNone": "隐藏",
+    "newGroup": "新建组",
+    "apply": "启用此组",
+    "clear": "关闭全部",
+    "undo": "撤销上一次切换",
+    "save": "保存",
+    "delete": "删除",
+    "export": "导出",
+    "import": "导入",
+    "search": "搜索技能",
+    "empty": "还没有技能组。新建一个，然后把技能拖进来。",
+    "autoRules": "自动激活规则",
+    "ruleAdd": "添加规则",
+    "ruleWorkspace": "工作区路径包含",
+    "rulePreset": "Agent 预设",
+    "ruleKeywords": "关键词",
+    "forTurn": "只对下一轮生效",
+    "noSelection": "未选择技能组，当前显示全部技能。",
+    "note": "备注",
+    "ioHint": "导出的 JSON 只包含组定义与规则；导入会合并到现有组。"
+  },
+  "action": {
+    "add": "加入",
+    "remove": "移出",
+    "rename": "重命名",
+    "confirm": "确认",
+    "cancel": "取消",
+    "refresh": "刷新",
+    "move": "拖动排序",
+    "manage": "管理技能组"
+  }
+}

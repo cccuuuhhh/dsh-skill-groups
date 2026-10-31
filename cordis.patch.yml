@@ -1,0 +1,7 @@
+# dsh-skill-groups: insert the Host row and its Client half.
+# Installing the bundle through the plugin manager applies this patch; a manual
+# profile entry with the same id would mount the plugin twice and fail.
+- insert:
+    - id: skill-groups
+      name: dsh-skill-groups
+      config: {}

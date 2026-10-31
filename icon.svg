@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Skill groups">
+  <!-- Three stacked layers: the active group, the additive group, and the
+       dormant stack. Stroke-only so it inherits the host theme colour. -->
+  <rect x="3" y="3.5" width="18" height="5" rx="1.5" />
+  <rect x="3" y="10.5" width="18" height="5" rx="1.5" stroke-dasharray="2.5 2" />
+  <rect x="3" y="17.5" width="18" height="3" rx="1.5" stroke-dasharray="1 2.5" />
+  <circle cx="6.4" cy="6" r="0.9" fill="currentColor" stroke="none" />
+  <circle cx="6.4" cy="13" r="0.9" fill="currentColor" stroke="none" />
+</svg>

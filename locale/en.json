@@ -1,0 +1,55 @@
+{
+  "meta": {
+    "title": "Skill Groups",
+    "description": "Group skills and toggle any combination of them. Only the model-visible catalog changes — no skill is deleted and no file is rewritten."
+  },
+  "chip": {
+    "label": "Skill group",
+    "none": "All skills"
+  },
+  "panel": {
+    "title": "Skill Groups",
+    "current": "Active now",
+    "groups": "Groups",
+    "members": "Members",
+    "cost": "Catalog cost",
+    "costHint": "This group puts about {chars} characters (≈{tokens} tokens) into the model catalog.",
+    "masked": "{count} skills hidden",
+    "reasonActive": "Active group",
+    "reasonUngrouped": "Ungrouped — kept by the default policy",
+    "reasonInactive": "Belongs to \"{group}\", which is inactive",
+    "reasonPolicy": "Ungrouped, and the default policy hides those",
+    "defaultPolicy": "Ungrouped skills",
+    "defaultAll": "Stay visible",
+    "defaultNone": "Hide",
+    "newGroup": "New group",
+    "apply": "Enable this group",
+    "clear": "Turn all off",
+    "undo": "Undo last switch",
+    "save": "Save",
+    "delete": "Delete",
+    "export": "Export",
+    "import": "Import",
+    "search": "Search skills",
+    "empty": "No skill groups yet. Create one, then add skills to it.",
+    "autoRules": "Auto-activation rules",
+    "ruleAdd": "Add rule",
+    "ruleWorkspace": "Workspace path contains",
+    "rulePreset": "Agent preset",
+    "ruleKeywords": "Keywords",
+    "forTurn": "Next turn only",
+    "noSelection": "No group selected — all skills are shown.",
+    "note": "Note",
+    "ioHint": "The exported JSON holds group definitions and rules only; importing merges into the existing groups."
+  },
+  "action": {
+    "add": "Add",
+    "remove": "Remove",
+    "rename": "Rename",
+    "confirm": "Confirm",
+    "cancel": "Cancel",
+    "refresh": "Refresh",
+    "move": "Drag to reorder",
+    "manage": "Manage skill groups"
+  }
+}

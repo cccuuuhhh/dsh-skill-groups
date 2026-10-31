@@ -1,0 +1,19 @@
+# Internal development contract — not part of the published plugin.
+CONTRACT.md
+
+# Node / package manager
+node_modules/
+*.log
+npm-debug.log*
+pnpm-debug.log*
+
+# OS / editor
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/
+
+# Test / temp artifacts
+coverage/
+*.tmp
