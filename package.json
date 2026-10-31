@@ -3,8 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
-  "description": "Quick-switch named skill groups: exclusive modes, additive groups, per-session masking, cost preview, auto rules.",
+  "description": "Group skills and toggle any combination, with drag-to-reorder and per-group catalog cost preview.",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cccuuuhhh/dsh-skill-groups.git"
+  },
+  "homepage": "https://github.com/cccuuuhhh/dsh-skill-groups#readme",
   "main": "index.js",
   "exports": {
     ".": "./index.js",
