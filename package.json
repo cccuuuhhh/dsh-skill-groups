@@ -1,10 +1,12 @@
 {
-  "name": "dsh-skill-groups",
+  "name": "@cccuuuhhh/dsh-skill-groups",
   "version": "0.1.0",
-  "private": true,
   "type": "module",
   "description": "Group skills and toggle any combination, with drag-to-reorder and per-group catalog cost preview.",
   "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/cccuuuhhh/dsh-skill-groups.git"
