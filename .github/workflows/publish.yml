@@ -6,28 +6,26 @@ on:
       - 'v*'
   workflow_dispatch:
 
+permissions:
+  id-token: write
+  contents: read
+
 jobs:
   publish:
     runs-on: ubuntu-latest
-    permissions:
-      id-token: write
-      contents: read
     steps:
       - uses: actions/checkout@v4
 
-      # Node 24 自带 npm 11，满足 Trusted Publishing 要求的 npm >= 11.5.1 / Node >= 22.14.0
       - uses: actions/setup-node@v4
         with:
           node-version: '24'
+          registry-url: 'https://registry.npmjs.org'
+          package-manager-cache: false
 
-      - name: Upgrade npm
+      - name: Show versions
         run: |
-          npm install -g npm@latest
-          npm --version
           node --version
-
-      # 注意：不要设置 registry-url。setup-node 会注入空的 NODE_AUTH_TOKEN 覆盖 OIDC 身份
-      # 也不要在这里执行 npm whoami —— OIDC 是发布时才换取短期凭据，whoami 会 401
+          npm --version
 
       - name: Run tests
         run: npm test
