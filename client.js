@@ -18,7 +18,7 @@
  */
 
 window.__ModuleLoader__.load({
-	id: "dsh-skill-groups",
+	id: "@cccuuuhhh/dsh-skill-groups",
 	factory: (require) => {
 		var module = { exports: {} };
 		var exports = module.exports;
