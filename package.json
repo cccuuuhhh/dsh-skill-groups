@@ -13,9 +13,11 @@
   },
   "homepage": "https://github.com/cccuuuhhh/dsh-skill-groups#readme",
   "main": "index.js",
+  "icon": "./icon.svg",
   "exports": {
     ".": "./index.js",
     "./client": "./client.js",
+    "./package.json": "./package.json",
     "./locale/*.json": "./locale/*.json",
     "./icon": "./icon.svg"
   },
