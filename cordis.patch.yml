@@ -3,5 +3,5 @@
 # profile entry with the same id would mount the plugin twice and fail.
 - insert:
     - id: skill-groups
-      name: dsh-skill-groups
+      name: '@cccuuuhhh/dsh-skill-groups'
       config: {}
