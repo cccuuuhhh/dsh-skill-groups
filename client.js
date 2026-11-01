@@ -1065,7 +1065,7 @@ window.__ModuleLoader__.load({
 				const name = skill.name.toLowerCase();
 				const description = typeof skill.description === "string" ? skill.description.toLowerCase() : "";
 				return name.includes(query) || description.includes(query);
-			});
+			}).sort((left, right) => Number(members.has(right.name)) - Number(members.has(left.name)));
 			return h(
 				"div",
 				{ className: "dsh-sg-card" },
