@@ -27,16 +27,6 @@ import { registerSkillGroupApi } from './lib/api.js'
 import { registerSkillGroupTools } from './lib/tools.js'
 import { registerSkillGroupCommands } from './lib/commands.js'
 
-/**
- * Services this plugin needs before `apply` runs.
- *
- * `webServer` must exist when the HTTP API registers: the Cordis fiber
- * otherwise starts while the service is still missing,
- * `registerSkillGroupApi` finds no server and unmounts silently, and every
- * panel request answers 404.
- */
-export const inject = ['webServer']
-
 /** Description cap used by @deepseek-ai/dsh-tool-skill's catalog projection. */
 const DESCRIPTION_MAX_LENGTH = 500
 
@@ -230,5 +220,10 @@ function publishVisibility(visibility) {
   if (digest === lastPublished) return
   lastPublished = digest
 }
+
+// The loader's unwrapExports() collapses this module to its default export,
+// so a top-level `export const inject` never reaches the registry. Hanging
+// the dependency list on the plugin function keeps it visible to Cordis.
+apply.inject = ['webServer']
 
 export default apply
