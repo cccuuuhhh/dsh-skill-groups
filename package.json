@@ -1,6 +1,6 @@
 {
   "name": "@cccuuuhhh/dsh-skill-groups",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "type": "module",
   "description": "Group skills and toggle any combination, with drag-to-reorder and per-group catalog cost preview.",
   "license": "MIT",
