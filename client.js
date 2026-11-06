@@ -71,6 +71,7 @@ window.__ModuleLoader__.load({
 			"panel.export": "导出",
 			"panel.import": "导入",
 			"panel.search": "搜索技能",
+			"panel.memberMissing": "未在当前环境安装 · 仍属于该组",
 			"panel.empty": "还没有技能组。新建一个，然后把技能拖进来。",
 			"panel.autoRules": "自动激活规则",
 			"panel.ruleAdd": "添加规则",
@@ -121,6 +122,7 @@ window.__ModuleLoader__.load({
 			"panel.export": "Export",
 			"panel.import": "Import",
 			"panel.search": "Search skills",
+			"panel.memberMissing": "Not installed in this environment · still a member",
 			"panel.empty": "No skill groups yet. Create one, then add skills to it.",
 			"panel.autoRules": "Auto-activation rules",
 			"panel.ruleAdd": "Add rule",
@@ -1060,12 +1062,34 @@ window.__ModuleLoader__.load({
 			const [search, setSearch] = React.useState("");
 			const members = new Set(Array.isArray(group.members) ? group.members : []);
 			const query = search.trim().toLowerCase();
-			const rows = context.skills.filter((skill) => {
+			// A group's own member list — not the host catalog — is the authority for
+			// what belongs to it. The catalog only supplies descriptions and extra
+			// candidates: a member may be uninstalled, or installed in another
+			// harness, and the host's skills.list() legitimately cannot see it.
+			// Rendering from the catalog alone produced "7 members, 0 rows"; here every
+			// stored member gets a row, flagged when the host cannot resolve it.
+			const byName = new Map();
+			for (const skill of context.skills) {
+				if (skill !== null && typeof skill === "object" && typeof skill.name === "string") byName.set(skill.name, skill);
+			}
+			const rowFor = (name) => {
+				const found = byName.get(name);
+				return found !== undefined
+					? found
+					: { name, description: "", source: "missing", available: false };
+			};
+			// Members first, in the group's own order; then the remaining catalog
+			// skills as "+ Add" candidates. members is the source of the count.
+			const memberRows = [...members].map(rowFor);
+			const candidateRows = context.skills
+				.filter((skill) => skill !== null && typeof skill.name === "string" && !members.has(skill.name))
+				.map((skill) => skill);
+			const rows = [...memberRows, ...candidateRows].filter((skill) => {
 				if (query === "") return true;
 				const name = skill.name.toLowerCase();
 				const description = typeof skill.description === "string" ? skill.description.toLowerCase() : "";
 				return name.includes(query) || description.includes(query);
-			}).sort((left, right) => Number(members.has(right.name)) - Number(members.has(left.name)));
+			});
 			return h(
 				"div",
 				{ className: "dsh-sg-card" },
@@ -1085,7 +1109,7 @@ window.__ModuleLoader__.load({
 						onChange: (event) => setSearch(event.currentTarget.value),
 					}),
 				),
-				context.skills.length === 0
+				rows.length === 0 && members.size === 0
 					? h("div", { className: "dsh-sg-empty" }, t("panel.search"))
 					: h(
 							"div",
@@ -1094,6 +1118,7 @@ window.__ModuleLoader__.load({
 							rows.map((skill) => {
 								const isMember = members.has(skill.name);
 								const row = effectiveByName.get(skill.name);
+								const missing = skill.available === false || skill.source === "missing";
 								const reason = isMember ? "" : reasonText(t, row);
 								return h(
 									"div",
@@ -1105,8 +1130,10 @@ window.__ModuleLoader__.load({
 										h(
 											"span",
 											{ className: "dsh-sg-skill-meta" },
-											typeof skill.source === "string" ? skill.source : "",
-											reason === "" ? "" : " · " + reason,
+											missing
+												? t("panel.memberMissing")
+												: (typeof skill.source === "string" ? skill.source : ""),
+											reason === "" || missing ? "" : " · " + reason,
 										),
 									),
 									h(

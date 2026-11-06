@@ -31,6 +31,7 @@
     "export": "导出",
     "import": "导入",
     "search": "搜索技能",
+    "memberMissing": "未在当前环境安装 · 仍属于该组",
     "empty": "还没有技能组。新建一个，然后把技能拖进来。",
     "autoRules": "自动激活规则",
     "ruleAdd": "添加规则",
